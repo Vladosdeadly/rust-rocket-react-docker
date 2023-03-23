@@ -1,0 +1,20 @@
+version: '3.3'
+
+networks:
+  App_network:
+services:
+  App_backend:
+    build: ./backend
+    image: App_backend
+    ports:
+      - "127.0.0.1:8000:8000"
+    networks:
+      - App_network
+
+  App_client:
+    build: ./frontend
+    image: App_client
+    ports:
+      - "127.0.0.1:3000:3000"
+    networks:
+      - App_network
